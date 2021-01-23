@@ -60,6 +60,7 @@ public class movementController : MonoBehaviour
         string toExecute = this.client.ReceiveData();
         if (toExecute != null)
         {
+            Debug.Log(toExecute);
             string[] isValidCommand = toExecute.Split(':');
             opcodesPtr[isValidCommand[0]](isValidCommand);
             toExecute = null;
@@ -164,7 +165,8 @@ public class movementController : MonoBehaviour
 
     private void loginData(string[] chainList)
     {
-        transform.position = new Vector3(float.Parse(chainList[3], System.Globalization.CultureInfo.InvariantCulture), float.Parse(chainList[4], System.Globalization.CultureInfo.InvariantCulture), float.Parse(chainList[5], System.Globalization.CultureInfo.InvariantCulture));
+        transform.position = new Vector3(float.Parse(chainList[2], System.Globalization.CultureInfo.InvariantCulture), float.Parse(chainList[3], System.Globalization.CultureInfo.InvariantCulture), float.Parse(chainList[4], System.Globalization.CultureInfo.InvariantCulture));
+        mainCamera.position = new Vector3(float.Parse(chainList[2], System.Globalization.CultureInfo.InvariantCulture), float.Parse(chainList[3], System.Globalization.CultureInfo.InvariantCulture), float.Parse(chainList[4], System.Globalization.CultureInfo.InvariantCulture));
     }
 
     private void initializeOpcodes()
