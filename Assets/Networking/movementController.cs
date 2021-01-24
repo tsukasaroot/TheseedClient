@@ -155,7 +155,6 @@ public class movementController : MonoBehaviour
         float z = transform.position.z;
 
         query += client.nickName + ':' + x + ':' + y + ':' + z;
-        Debug.Log(query);
 
         client.SendData(query);
     }
