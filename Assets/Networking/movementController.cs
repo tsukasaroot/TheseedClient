@@ -53,6 +53,8 @@ public class movementController : MonoBehaviour
         ProfileManager.SetActive(GUI);
 
         inMovement = false;
+
+        System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
     }
 
     void Update()
@@ -60,7 +62,6 @@ public class movementController : MonoBehaviour
         string toExecute = this.client.ReceiveData();
         if (toExecute != null)
         {
-            Debug.Log(toExecute);
             string[] isValidCommand = toExecute.Split(':');
             opcodesPtr[isValidCommand[0]](isValidCommand);
             toExecute = null;
@@ -154,6 +155,7 @@ public class movementController : MonoBehaviour
         float z = transform.position.z;
 
         query += client.nickName + ':' + x + ':' + y + ':' + z;
+        Debug.Log(query);
 
         client.SendData(query);
     }
@@ -166,7 +168,7 @@ public class movementController : MonoBehaviour
     private void loginData(string[] chainList)
     {
         transform.position = new Vector3(float.Parse(chainList[2], System.Globalization.CultureInfo.InvariantCulture), float.Parse(chainList[3], System.Globalization.CultureInfo.InvariantCulture), float.Parse(chainList[4], System.Globalization.CultureInfo.InvariantCulture));
-        mainCamera.position = new Vector3(float.Parse(chainList[2], System.Globalization.CultureInfo.InvariantCulture), float.Parse(chainList[3], System.Globalization.CultureInfo.InvariantCulture), float.Parse(chainList[4], System.Globalization.CultureInfo.InvariantCulture));
+        mainCamera.transform.position = new Vector3(float.Parse(chainList[2], System.Globalization.CultureInfo.InvariantCulture) + 1, float.Parse(chainList[3], System.Globalization.CultureInfo.InvariantCulture) + 2, float.Parse(chainList[4], System.Globalization.CultureInfo.InvariantCulture) - 2);
     }
 
     private void initializeOpcodes()
