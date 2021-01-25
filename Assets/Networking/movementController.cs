@@ -170,11 +170,27 @@ public class movementController : MonoBehaviour
         mainCamera.transform.position = new Vector3(float.Parse(chainList[2], System.Globalization.CultureInfo.InvariantCulture) + 1, float.Parse(chainList[3], System.Globalization.CultureInfo.InvariantCulture) + 2, float.Parse(chainList[4], System.Globalization.CultureInfo.InvariantCulture) - 2);
     }
 
+    private void correctPosition(string[] chainList)
+    {
+        Debug.Log(chainList[2]);
+        if (chainList[1] == "z")
+        {
+            transform.position = new Vector3((float)transform.position.x, (float)transform.position.y, float.Parse(chainList[2]));
+            mainCamera.transform.position = new Vector3((float)mainCamera.transform.position.x, (float)mainCamera.transform.position.y, float.Parse(chainList[2], System.Globalization.CultureInfo.InvariantCulture) - 2);
+        }
+        if (chainList[1] == "x")
+        {
+            transform.position = new Vector3(float.Parse(chainList[2]), (float)transform.position.y, (float)transform.position.z);
+            mainCamera.transform.position = new Vector3(float.Parse(chainList[2], System.Globalization.CultureInfo.InvariantCulture) + 1, (float)mainCamera.transform.position.y, (float)mainCamera.transform.position.z);
+        }
+    }
+
     private void initializeOpcodes()
     {
         opcodesPtr = new Dictionary<string, Action<string[]>>();
         opcodesPtr["C_SENDCURRENTPOSITION"] = sendPosition;
         opcodesPtr["C_GETPROFILE"] = getProfile;
         opcodesPtr["C_LOGIN_DATA"] = loginData;
+        opcodesPtr["C_CORRECTPOSITION"] = correctPosition;
     }
 }

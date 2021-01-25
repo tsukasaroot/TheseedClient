@@ -1263,7 +1263,7 @@ GameObject:
   - component: {fileID: 1512111266}
   - component: {fileID: 1512111265}
   m_Layer: 5
-  m_Name: profile (1)
+  m_Name: chatbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1781,7 +1781,7 @@ PrefabInstance:
     - target: {fileID: 4961930074453644039, guid: 59806a2ea477baf45bc7e594102efe48,
         type: 3}
       propertyPath: walkSpeed
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4961930074453644039, guid: 59806a2ea477baf45bc7e594102efe48,
         type: 3}
@@ -1837,7 +1837,7 @@ PrefabInstance:
     - target: {fileID: 4961930075670719759, guid: 59806a2ea477baf45bc7e594102efe48,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31238312
+      value: 82
       objectReference: {fileID: 0}
     - target: {fileID: 4961930075670719759, guid: 59806a2ea477baf45bc7e594102efe48,
         type: 3}

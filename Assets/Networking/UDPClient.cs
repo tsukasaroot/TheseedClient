@@ -110,12 +110,13 @@ public class UDPClient : MonoBehaviour
             opcode += "0x12" + '\n';
             byte[] data = Encoding.UTF8.GetBytes(opcode);
             Client.Send(data, data.Length);
+            return true;
         }
         catch (Exception err)
         {
             print(err.ToString());
+            return false;
         }
-        return false;
     }
 
     private string parseIt(string dataString)
