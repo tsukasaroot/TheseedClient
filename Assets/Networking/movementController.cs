@@ -63,6 +63,7 @@ public class movementController : MonoBehaviour
         if (toExecute != null)
         {
             string[] isValidCommand = toExecute.Split(':');
+            Debug.Log(isValidCommand[0]);
             opcodesPtr[isValidCommand[0]](isValidCommand);
             toExecute = null;
         }
@@ -111,10 +112,6 @@ public class movementController : MonoBehaviour
             transform.Translate(0, 0, walkSpeed * Time.deltaTime);
             animations.Play("walk");
         }
-        /*if (!inMovement)
-        {
-            animations.Play("idle");
-        }*/
 
         if (Input.GetKey(inputAttack))
         {
@@ -172,7 +169,6 @@ public class movementController : MonoBehaviour
 
     private void correctPosition(string[] chainList)
     {
-        Debug.Log(chainList[2]);
         if (chainList[1] == "z")
         {
             transform.position = new Vector3((float)transform.position.x, (float)transform.position.y, float.Parse(chainList[2]));

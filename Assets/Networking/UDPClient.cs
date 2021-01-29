@@ -34,7 +34,7 @@ public class UDPClient : MonoBehaviour
 
         try
         {
-            Client.Connect(IPAddress.Parse(ipToListen), 16384);
+            Client.Connect(IPAddress.Parse(ipToListen), port);
         }
         catch (SocketException e)
         {
@@ -69,12 +69,13 @@ public class UDPClient : MonoBehaviour
         byte[] received = new byte[0];
         SendData("S_LOGIN:" + nickName + ":" + pass);
 
-        while (!connected)
+        while (connected)
         {
             received = Client.Receive(ref ipep);
             string validation = Encoding.ASCII.GetString(received).Trim();
             if (validation != null)
             {
+                Debug.Log(validation);
                 connected = (validation.Contains("C_LOGIN")) ? true : false;
             }
         }
